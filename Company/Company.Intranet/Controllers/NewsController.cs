@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Company.Data.Data;
+using Company.Data.Data.CMS;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Company.Intranet.Data;
-using Company.Intranet.Models.CMS;
 
 namespace Company.Intranet.Controllers
 {
     public class NewsController : Controller
     {
-        private readonly CompanyIntranetContext _context;
+        private readonly CompanyContext _context;
 
-        public NewsController(CompanyIntranetContext context)
+        public NewsController(CompanyContext context)
         {
             _context = context;
         }
