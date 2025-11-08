@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Company.Intranet.Data;
-using Company.Intranet.Models.Shop;
+using Company.Data.Data;
+using Company.Data.Data.Shop;
 
 namespace Company.Intranet.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly CompanyIntranetContext _context;
+        private readonly CompanyContext _context;
 
-        public ProductController(CompanyIntranetContext context)
+        public ProductController(CompanyContext context)
         {
             _context = context;
         }
@@ -18,8 +18,8 @@ namespace Company.Intranet.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            var companyIntranetContext = _context.Product.Include(p => p.TypeOfProduct);
-            return View(await companyIntranetContext.ToListAsync());
+            var CompanyContext = _context.Product.Include(p => p.TypeOfProduct);
+            return View(await CompanyContext.ToListAsync());
         }
 
         // GET: Product/Details/5

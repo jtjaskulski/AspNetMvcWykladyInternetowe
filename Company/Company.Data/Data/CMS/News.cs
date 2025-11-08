@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Company.Intranet.Models.CMS
+namespace Company.Data.Data.CMS
 {
-    public class Page
+    public class News
     {
         [Key]
-        public int IdPage { get; set; }
+        public int IdNews { get; set; }
 
         [Required(ErrorMessage = "Title link is required")]
         [MaxLength(30, ErrorMessage = "Title link should have only 30 characters.")]
