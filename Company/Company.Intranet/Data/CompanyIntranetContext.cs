@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Company.Intranet.Models.CMS;
+using Company.Intranet.Models.Shop;
 
 namespace Company.Intranet.Data
 {
@@ -9,7 +11,9 @@ namespace Company.Intranet.Data
         {
         }
 
-        public DbSet<Company.Intranet.Models.CMS.Page> Page { get; set; } = default!;
-        public DbSet<Company.Intranet.Models.CMS.News> News { get; set; } = default!;
+        public DbSet<Page> Page { get; set; } = default!;
+        public DbSet<News> News { get; set; } = default!;
+        public DbSet<TypeOfProduct> TypeOfProduct { get; set; } = default!;
+        public DbSet<Product> Product { get; set; } = default!;
     }
 }
