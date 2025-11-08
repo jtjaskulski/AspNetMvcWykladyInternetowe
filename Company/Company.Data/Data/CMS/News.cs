@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Company.Intranet.Models.CMS
+namespace Company.Data.Data.CMS
 {
     public class News
     {
