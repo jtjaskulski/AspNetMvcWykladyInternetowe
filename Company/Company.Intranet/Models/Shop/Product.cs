@@ -19,7 +19,7 @@ namespace Company.Intranet.Models.Shop
         public decimal Price { get; set; }
 
         //[Required(ErrorMessage = "Photo of product is required")]
-        [Display(Name = "Select yout photo")]
+        [Display(Name = "Select your photo")]
         public string FotoURL { get; set; }
 
         [Display(Name = "Description")]
