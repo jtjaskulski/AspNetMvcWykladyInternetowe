@@ -18,7 +18,7 @@ namespace Company.Intranet.Models.Shop
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        //[Required(ErrorMessage = "Photo of productr is required")]
+        //[Required(ErrorMessage = "Photo of product is required")]
         [Display(Name = "Select yout photo")]
         public string FotoURL { get; set; }
 
