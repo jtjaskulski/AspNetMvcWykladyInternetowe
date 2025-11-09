@@ -1,15 +1,13 @@
 ﻿@model Company.Data.Data.CMS.News
 
 @{
-    ViewData["Title"] = "News";
+    ViewData["Title"] = Model != null ? Model.Title : "News";
 }
 
 <div class="container">
     <br><br>
     @if (Model != null)
     {
-        ViewData["Title"] = @Model.Title;
-
         <div>Aktualność</div>
         <h1 class="header center orange-text">@Model.Title</h1>
         <div class="row center">
