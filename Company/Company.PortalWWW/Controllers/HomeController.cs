@@ -34,7 +34,9 @@ namespace Company.PortalWWW.Controllers
                 ).ToList();
 
             if (id == null)
+            {
                 id = _context.Page.FirstOrDefault()?.IdPage;
+            }
             var item = _context.Page.Find(id);
 
             return View(item);
