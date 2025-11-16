@@ -21,7 +21,11 @@ namespace Company.PortalWWW.Controllers
             ViewBag.ModelNews = await _context.News.OrderBy(n => n.DisplayOrder).ToListAsync();
             if (id == null)
             {
-                var firstType = await _context.TypeOfProduct.FirstAsync();
+                var firstType = await _context.TypeOfProduct.FirstOrDefaultAsync();
+                if (firstType == null)
+                {
+                    return NotFound();
+                }
                 id = firstType.IdTypeOfProduct;
             }
             return View(await _context.Product.Where(t => t.IdTypeOfProduct == id).ToListAsync());
