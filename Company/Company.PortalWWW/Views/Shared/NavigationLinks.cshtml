@@ -4,8 +4,8 @@
     <a id="logo-container" href="#" class="brand-logo">WSB-NLU MVC</a>
     <ul class="right hide-on-med-and-down">
         @foreach (var item in Model)
-        { 
-            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage})</li>
+        {
+            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
         }
         <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
         <li>@Html.ActionLink("O firmie", "About", "Home")</li>
@@ -15,7 +15,7 @@
     <ul id="nav-mobile" class="sidenav">
         @foreach (var item in Model)
         {
-            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage })</li>
+            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
         }
         <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
         <li>@Html.ActionLink("O firmie", "About", "Home")</li>

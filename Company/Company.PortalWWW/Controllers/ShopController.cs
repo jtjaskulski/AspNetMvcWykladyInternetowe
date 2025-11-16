@@ -23,6 +23,12 @@ namespace Company.PortalWWW.Controllers
                 var firstType = await _context.TypeOfProduct.FirstAsync();
                 id = firstType.IdTypeOfProduct;
             }
+            ViewBag.ModelNews =
+                (
+                    from news in _context.News
+                    orderby news.DisplayOrder
+                    select news
+                ).ToList();
             return View(await _context.Product.Where(t => t.IdTypeOfProduct == id).ToListAsync());
         }
     }
