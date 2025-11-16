@@ -28,6 +28,9 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.IsDiscount)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TypeOfProduct)
             </th>
             <th></th>
@@ -50,6 +53,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDiscount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TypeOfProduct.Name)

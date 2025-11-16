@@ -38,5 +38,12 @@ namespace Company.PortalWWW.Controllers
             }
             return View(item);
         }
+
+        public async Task<IActionResult> Discounts()
+        {
+            return View(await _context.Product
+                                .Where(t => t.IsDiscount)
+                                .ToListAsync());
+        }
     }
 }

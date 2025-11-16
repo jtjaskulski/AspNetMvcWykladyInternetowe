@@ -18,8 +18,8 @@ namespace Company.Intranet.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            var CompanyContext = _context.Product.Include(p => p.TypeOfProduct);
-            return View(await CompanyContext.ToListAsync());
+            var companyContext = _context.Product.Include(p => p.TypeOfProduct);
+            return View(await companyContext.ToListAsync());
         }
 
         // GET: Product/Details/5
@@ -53,7 +53,7 @@ namespace Company.Intranet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdProduct,Code,Name,Price,FotoURL,Description,IdTypeOfProduct")] Product product)
+        public async Task<IActionResult> Create([Bind("IdProduct,Code,Name,Price,FotoURL,Description,IsDiscount,IdTypeOfProduct")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace Company.Intranet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdProduct,Code,Name,Price,FotoURL,Description,IdTypeOfProduct")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProduct,Code,Name,Price,FotoURL,Description,IsDiscount,IdTypeOfProduct")] Product product)
         {
             if (id != product.IdProduct)
             {
