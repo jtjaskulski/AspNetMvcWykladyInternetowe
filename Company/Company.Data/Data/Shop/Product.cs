@@ -25,6 +25,9 @@ namespace Company.Data.Data.Shop
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        [Display(Name = "Is that product discounted?")]
+        public bool IsDiscount { get; set; }
+
         [Display(Name = "Type of the product")]
         public int IdTypeOfProduct { get; set; }
 
