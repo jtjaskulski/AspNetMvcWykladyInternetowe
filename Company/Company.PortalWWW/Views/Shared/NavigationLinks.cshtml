@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Company.Data.Data.CMS.Page>
 
-<div class="nav-wrapper container">
-    <a id="logo-container" href="#" class="brand-logo">WSB-NLU MVC</a>
+<div class="nav-wrapper container"> 
+    @Html.ActionLink("WSB-NLU MVC", "Index", "Home", new { @id = "logo-container", @class = "brand-logo" })
     <ul class="right hide-on-med-and-down">
         @foreach (var item in Model)
         {
             <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
         }
-        <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+        <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
         <li>@Html.ActionLink("O firmie", "About", "Home")</li>
         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
     </ul>
@@ -17,7 +17,7 @@
         {
             <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
         }
-        <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
+        <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
         <li>@Html.ActionLink("O firmie", "About", "Home")</li>
         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
     </ul>
