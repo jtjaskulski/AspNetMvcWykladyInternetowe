@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="light-blue lighten-1" role="navigation">
-        @await Html.PartialAsync("NavigationLinks", (IEnumerable<Company.Data.Data.CMS.Page>)ViewBag.ModelPage)
+        @await Html.PartialAsync("TypeOfProductMenu", (IEnumerable<Company.Data.Data.Shop.TypeOfProduct>)ViewBag.TypeOfProducts)
     </nav>
     <div class="section no-pad-bot" id="index-banner">
         @RenderBody()
@@ -18,8 +18,9 @@
     <div class="container">
         @await Html.PartialAsync("NewsPartial", (IEnumerable<Company.Data.Data.CMS.News>)ViewBag.ModelNews)
     </div>
-
     @await Html.PartialAsync("FooterPartial")
+
+    
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/materialize/js/materialize.js"></script>

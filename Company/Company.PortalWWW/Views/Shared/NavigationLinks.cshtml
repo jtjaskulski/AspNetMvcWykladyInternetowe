@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Company.Data.Data.CMS.Page>
+
+<div class="nav-wrapper container"> 
+    @Html.ActionLink("WSB-NLU MVC", "Index", "Home", new { @id = "logo-container", @class = "brand-logo" })
+    <ul class="right hide-on-med-and-down">
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
+        }
+        <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
+        <li>@Html.ActionLink("O firmie", "About", "Home")</li>
+        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    </ul>
+
+    <ul id="nav-mobile" class="sidenav">
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.LinkTitle, "Index", "Home", new { id = item.IdPage }, null)</li>
+        }
+        <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
+        <li>@Html.ActionLink("O firmie", "About", "Home")</li>
+        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    </ul>
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+</div>
