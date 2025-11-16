@@ -19,20 +19,6 @@ namespace Company.PortalWWW.Controllers
 
         public IActionResult Index(int? id)
         {
-            ViewBag.ModelPage =
-                (
-                    from page in _context.Page 
-                    orderby page.DisplayOrder 
-                    select page
-                ).ToList();
-
-            ViewBag.ModelNews =
-                (
-                    from news in _context.News
-                    orderby news.DisplayOrder
-                    select news
-                ).ToList();
-
             if (id == null)
             {
                 id = _context.Page.FirstOrDefault()?.IdPage;
