@@ -22,7 +22,7 @@ namespace Company.PortalWWW.Controllers.Components
             }
             catch (Exception e)
             {
-                _logger.LogError(e, e.Message);
+                _logger.LogError(e, "Error in NewsComponent");
                 throw;
             }
         }
