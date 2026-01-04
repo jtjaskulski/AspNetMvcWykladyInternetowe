@@ -1,0 +1,57 @@
+﻿@model Company.PortalWWW.Models.Shop.CartViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CartLayout.cshtml";
+}
+
+<div class="container">
+    <br><br>
+    <h1 class="header center orange-text">Witam w Koszyku!!!!</h1>
+    <div class="row center">
+        <h5 class="header col s12 light">
+            Zapraszam do zapoznania się z naszymi arcydoskonałymi produktami.
+            <br />
+            Data i godzina edycji: @DateTime.Now.ToString()
+        </h5>
+    </div>
+    <div class="row center">
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" id="download-button" class="btn-large waves-effect waves-light orange">Zapraszamy</a>
+    </div>
+    <br><br>
+
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="Shop" asp-route-id="@item.IdProduct">@item.Product.Name</a> |
+                </td>
+                <td>
+                    @String.Format("{0:F}", item.Product.Price)
+                </td>
+                <td>
+                    @String.Format("{0:F}", item.Quantity)
+                </td>
+                <td>
+                    <a asp-action="DeleteCartItem" asp-controller="Cart" asp-route-id="@item.IdCartItem">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <h4>Total:@String.Format("{0:F}", Model.Total) </h4>
+    <div>
+        @* <a asp-action="Data" asp-controller="Order" class="btn btn-primary">Buy now!!</a> *@
+    </div>
+</div>

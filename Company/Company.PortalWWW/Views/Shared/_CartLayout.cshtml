@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/lib/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">WSB-NLU MVC</a>
+            <ul class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav"> 
+                <li>@Html.ActionLink("Sklep", "Index", "Shop")</li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        @RenderBody()
+    </div>
+    <div class="container">
+        @await Component.InvokeAsync("NewsComponent")
+    </div>
+    @await Html.PartialAsync("FooterPartial")
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/materialize/js/materialize.js"></script>
+    <script src="~/lib/materialize/js/materialize.min.js"></script>
+    <script>
+        (function($){
+            $(function(){
+              $('.sidenav').sidenav();
+            }); // end of document ready
+          })(jQuery); // end of jQuery name space
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

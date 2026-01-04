@@ -1,6 +1,6 @@
 ﻿using Company.Data.Data.Shop;
 
-namespace Company.PortalWWW.Models.Data
+namespace Company.PortalWWW.Models.Shop
 {
     public class CartViewModel
     {

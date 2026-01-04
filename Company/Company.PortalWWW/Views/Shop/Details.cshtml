@@ -25,7 +25,9 @@
             @Model.Description
             <br />
         </p>
-        
+        <p class="header col s12 light">
+            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.IdProduct" class="btn btn-primary">Add To Cart</a>
+        </p>
         Data i godzina edycji: @DateTime.Now.ToString()
     </div>
     <br><br>
