@@ -33,7 +33,29 @@ namespace Company.Intranet
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            // Auto-migracja bazy danych przy starcie (tylko DEV!)
+            if (app.Environment.IsDevelopment())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    try
+                    {
+                        var dbContext = scope.ServiceProvider.GetRequiredService<CompanyContext>();
+                        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
+                        // Migracja bazy danych
+                        dbContext.Database.Migrate();
+                        logger.LogInformation("✅ Baza danych zmigrowana pomyślnie!");
+                    }
+                    catch (Exception ex)
+                    {
+                        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                        logger.LogError(ex, "⚠️ Błąd podczas migracji bazy danych");
+                        Console.WriteLine($"⚠️ Błąd połączenia z bazą: {ex.Message}");
+                        Console.WriteLine("ℹ️ Uruchom: docker-compose -f docker-compose.yml up -d");
+                    }
+                }
+            }
             app.Run();
         }
     }

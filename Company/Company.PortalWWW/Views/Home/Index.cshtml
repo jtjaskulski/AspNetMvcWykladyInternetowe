@@ -8,9 +8,9 @@
 @if (Model != null)
 {
         ViewData["Title"] = Model.Title;
-        <h1 class="header center orange-text">@Model.Title</h1>
+        <h1 class="header center orange-text">@Html.Raw(Model.Title)</h1>
         <div class="row center">
-            <h5 class="header col s12 light">@Model.Content</h5>
+            <h5 class="header col s12 light">@Html.Raw(Model.Content)</h5>
             <br />
             Data i godzina edycji: @DateTime.Now.ToString()
         </div>
@@ -27,8 +27,6 @@ else
         <div class="row center">
             <a href="http://wp.pl" id="download-button" class="btn-large waves-effect waves-light orange">Do sklepu</a>
         </div>
-}
-    
+}    
     <br><br>
-
 </div>

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Company.Data.Migrations
 {
     [DbContext(typeof(CompanyContext))]
-    [Migration("20251116155610_DicountForProduct")]
-    partial class DicountForProduct
+    [Migration("20260104095407_InitialDMigration")]
+    partial class InitialDMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
