@@ -15,6 +15,7 @@ public class CompanyContext : DbContext
     public DbSet<News> News { get; set; } = default!;
     public DbSet<TypeOfProduct> TypeOfProduct { get; set; } = default!;
     public DbSet<Product> Product { get; set; } = default!;
+    public DbSet<CartItem> CartItem { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
