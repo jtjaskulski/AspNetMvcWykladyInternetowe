@@ -5,46 +5,36 @@ using System.Diagnostics;
 
 namespace Company.PortalWWW.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(CompanyContext context, ILogger<HomeController> logger) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly CompanyContext _context;
-
-
-        public HomeController(CompanyContext context, ILogger<HomeController> logger)
-        {
-            _context = context;
-            _logger = logger;
-        }
-
-        public IActionResult Index(int? id)
+        public async Task<IActionResult> Index(int? id)
         {
             if (id == null)
             {
-                id = _context.Page.FirstOrDefault()?.IdPage;
+                id = context.Page.FirstOrDefault()?.IdPage;
             }
-            var item = _context.Page.Find(id);
+            var item = context.Page.Find(id);
 
             return View(item);
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
             return View();
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
