@@ -11,8 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Data", "Company.Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{6ECFE925-2D0E-4FBB-B2ED-2E7E34915E4B}"
 	ProjectSection(SolutionItems) = preProject
+		docker-compose-all.yml = docker-compose-all.yml
+		docker-compose-db.yml = docker-compose-db.yml
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAsyncFun", "ConsoleAsyncFun\ConsoleAsyncFun.csproj", "{33F7F00F-E77F-8CF6-D764-7B9D7E4C834C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,10 @@ Global
 		{4089833B-3119-4FCA-B3B0-86618CDD2218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4089833B-3119-4FCA-B3B0-86618CDD2218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4089833B-3119-4FCA-B3B0-86618CDD2218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F7F00F-E77F-8CF6-D764-7B9D7E4C834C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F7F00F-E77F-8CF6-D764-7B9D7E4C834C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F7F00F-E77F-8CF6-D764-7B9D7E4C834C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F7F00F-E77F-8CF6-D764-7B9D7E4C834C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
