@@ -1,118 +1,103 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Company.PortalWWW</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="~/lib/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
-<body>
-    <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">WSB-NLU MVC</a>
-            <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                <li>@Html.ActionLink("O firmie", "About", "Home")</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-            </ul>
+<body class="flex flex-col min-h-screen bg-gray-50">
 
-            <ul id="nav-mobile" class="sidenav">
-                <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                <li>@Html.ActionLink("O firmie", "About", "Home")</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    <nav class="bg-sky-400" role="navigation">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a id="logo-container" href="#" class="text-xl font-bold text-white no-underline">WSB-NLU MVC</a>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <i class="material-icons text-3xl">menu</i>
+            </button>
+
+            <ul class="hidden md:flex space-x-6 list-none m-0 p-0">
+                <li>@Html.ActionLink("Strona główna", "Index", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
+                <li>@Html.ActionLink("O firmie", "About", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
             </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> 
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-sky-500 px-4 pb-4">
+            <ul class="list-none m-0 p-0 space-y-2">
+                <li>@Html.ActionLink("Strona główna", "Index", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
+                <li>@Html.ActionLink("O firmie", "About", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
+            </ul>
         </div>
     </nav>
-    <div class="section no-pad-bot" id="index-banner">
+
+    <main class="flex-grow">
         @RenderBody()
-    </div>
-    <div class="container">
-        <div class="section">
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                        <h5 class="center">O sklepie</h5>
+    </main>
 
-                        <p class="light">Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                        <h5 class="center">O firmie</h5>
-
-                        <p class="light">Firma jest doskonała. Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                        <h5 class="center">O towarach</h5>
-
-                        <p class="light">Towary są doskonałe Towary są doskonałe Towary są doskonałe Towary są doskonałe</p>
-                    </div>
-                </div>
+    <section class="max-w-7xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <i class="material-icons text-5xl text-sky-500">flash_on</i>
+                <h5 class="text-xl font-semibold mt-4 mb-2">O sklepie</h5>
+                <p class="text-gray-600 font-light">Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały</p>
             </div>
 
+            <div class="text-center">
+                <i class="material-icons text-5xl text-sky-500">group</i>
+                <h5 class="text-xl font-semibold mt-4 mb-2">O firmie</h5>
+                <p class="text-gray-600 font-light">Firma jest doskonała. Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała</p>
+            </div>
+
+            <div class="text-center">
+                <i class="material-icons text-5xl text-sky-500">settings</i>
+                <h5 class="text-xl font-semibold mt-4 mb-2">O towarach</h5>
+                <p class="text-gray-600 font-light">Towary są doskonałe Towary są doskonałe Towary są doskonałe Towary są doskonałe</p>
+            </div>
         </div>
-        <br><br>
+    </section>
 
-        <div class="section">
-        </div>
-    </div>
-
-    <footer class="page-footer orange">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">WSB-NLU</h5>
-                    <p class="grey-text text-lighten-4">Witamy</p>
-
-
+    <footer class="bg-orange-500 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2">
+                    <h5 class="text-lg font-semibold mb-2">WSB-NLU</h5>
+                    <p class="text-orange-100">Witamy</p>
                 </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
+                <div>
+                    <h5 class="text-lg font-semibold mb-2">Settings</h5>
+                    <ul class="list-none m-0 p-0 space-y-1">
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 1</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 2</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 3</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 4</a></li>
                     </ul>
                 </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
+                <div>
+                    <h5 class="text-lg font-semibold mb-2">Connect</h5>
+                    <ul class="list-none m-0 p-0 space-y-1">
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 1</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 2</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 3</a></li>
+                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 4</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
+        <div class="border-t border-orange-400">
+            <div class="max-w-7xl mx-auto px-4 py-4 text-sm text-orange-100">
                 Made by WSB-NLU
             </div>
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/materialize/js/materialize.js"></script>
-    <script src="~/lib/materialize/js/materialize.min.js"></script>
     <script>
-      (function($){
-          $(function(){
-            $('.sidenav').sidenav();
-          }); // end of document ready
-        })(jQuery); // end of jQuery name space
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
