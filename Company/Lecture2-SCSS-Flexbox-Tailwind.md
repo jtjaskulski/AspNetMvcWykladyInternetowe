@@ -8,12 +8,13 @@
 
 ## Table of Contents
 
-| # | Section | Duration | What We Build |
+| # | Section | Duration | What We Cover |
 |---|---------|----------|---------------|
 | 1 | [SCSS Fundamentals](#part-1-scss-fundamentals-75-min) | 75 min | Theory + live SCSS coding |
 | 2 | [Flexbox Deep Dive](#part-2-flexbox-deep-dive-75-min) | 75 min | Navigation, cards, product grid |
-| 3 | [Tailwind CSS in Practice](#part-3-tailwind-css-in-practice-75-min) | 75 min | Build all pages from scratch |
-| 4 | [Integration & Wrapup](#part-4-integration--wrapup-15-min) | 15 min | SCSS + Tailwind, best practices |
+| 3 | [Tailwind CSS — Theory](#part-3-tailwind-css--theory-60-min) | 60 min | Utility-first concepts, classes, responsive, dark mode, config |
+| 4 | [Tailwind CSS — In Practice](#part-4-tailwind-css--in-practice-50-min) | 50 min | Build all pages from scratch in our project |
+| 5 | [Integration & Wrapup](#part-5-integration--wrapup-15-min) | 15 min | SCSS + Tailwind, best practices |
 
 ---
 
@@ -650,9 +651,644 @@ In Tailwind: `class="flex justify-center items-center min-h-screen"`
 
 ---
 
-## Part 3: Tailwind CSS in Practice (75 min)
+## Part 3: Tailwind CSS — Theory (60 min)
 
-### 3.1 — Why Utility-First?
+### 3.1 — What Is Utility-First CSS?
+
+Traditional CSS approaches write **semantic class names** that describe what an element *is*:
+
+```html
+<!-- Traditional / Semantic CSS -->
+<button class="btn btn-primary btn-large">Click me</button>
+```
+
+```css
+.btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+.btn-primary { background: #3498db; color: white; }
+.btn-large { padding: 12px 24px; font-size: 1.2rem; }
+```
+
+**Utility-first CSS** writes classes that describe what an element *looks like*:
+
+```html
+<!-- Utility-First (Tailwind) -->
+<button class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 cursor-pointer">
+  Click me
+</button>
+```
+
+Each class does exactly one thing. You compose them to build any design.
+
+**The key insight:** You rarely write custom CSS. Instead, you apply pre-built utility classes directly in HTML.
+
+### 3.2 — Tailwind vs Traditional CSS vs Component Frameworks
+
+| Aspect | Traditional CSS | Component Framework (Bootstrap/Materialize) | Tailwind CSS |
+|--------|----------------|---------------------------------------------|-------------|
+| Approach | Write custom CSS | Use predefined components | Compose utility classes |
+| File naming | `.card`, `.hero` | `.btn`, `.card`, `.navbar` | `bg-blue-500`, `p-4`, `flex` |
+| Customization | Full control | Override framework | Full control via utilities |
+| Bundle size | Grows with project | Large (unused CSS) | Tiny (purges unused) |
+| Learning curve | Know CSS | Learn component API | Learn utility names |
+| Consistency | Varies | Built-in | Design system enforced |
+| Unique designs | Easy | Fight the framework | Easy |
+| Prototyping speed | Slow | Fast | **Fastest** |
+
+**Why Tailwind is winning:**
+1. **No context switching** — stay in HTML, no jumping to CSS files
+2. **Design constraints** — spacing, colors, sizes from a consistent scale
+3. **Tiny production bundles** — PurgeCSS removes unused utilities
+4. **No naming fatigue** — no inventing `.card-wrapper-inner-content`
+5. **Safe to change** — utilities are local, no global CSS side effects
+
+### 3.3 — Setup and Installation
+
+#### Method 1: CDN (Development / Prototyping)
+
+```html
+<script src="https://cdn.tailwindcss.com"></script>
+```
+
+This is what we use in our ASP.NET MVC project for simplicity. Not recommended for production.
+
+#### Method 2: npm (Production)
+
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+**tailwind.config.js:**
+
+```javascript
+module.exports = {
+  content: [
+    './Views/**/*.cshtml',
+    './wwwroot/**/*.js',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+**Input CSS (src/input.css):**
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+**Build command:**
+
+```bash
+npx tailwindcss -i ./src/input.css -o ./wwwroot/css/site.css --watch
+```
+
+#### Method 3: PostCSS Plugin
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+### 3.4 — Core Utility Classes
+
+#### Spacing (Margin & Padding)
+
+Tailwind uses a **4px base unit** scale:
+
+| Class | Value |
+|-------|-------|
+| `p-0` | `0px` |
+| `p-1` | `4px` (0.25rem) |
+| `p-2` | `8px` (0.5rem) |
+| `p-3` | `12px` (0.75rem) |
+| `p-4` | `16px` (1rem) |
+| `p-5` | `20px` (1.25rem) |
+| `p-6` | `24px` (1.5rem) |
+| `p-8` | `32px` (2rem) |
+| `p-10` | `40px` (2.5rem) |
+| `p-12` | `48px` (3rem) |
+| `p-16` | `64px` (4rem) |
+| `p-20` | `80px` (5rem) |
+
+**Directional prefixes:**
+
+| Prefix | Meaning |
+|--------|---------|
+| `p-` | all sides |
+| `px-` | horizontal (left + right) |
+| `py-` | vertical (top + bottom) |
+| `pt-` | top |
+| `pr-` | right |
+| `pb-` | bottom |
+| `pl-` | left |
+
+Same pattern for margin: `m-`, `mx-`, `my-`, `mt-`, `mr-`, `mb-`, `ml-`
+
+**Negative margins:** prefix with `-`: `-mt-4` = `margin-top: -16px`
+
+**Auto margins:** `mx-auto` = `margin-left: auto; margin-right: auto`
+
+#### Typography
+
+```html
+<!-- Font size -->
+<p class="text-xs">12px</p>
+<p class="text-sm">14px</p>
+<p class="text-base">16px (default)</p>
+<p class="text-lg">18px</p>
+<p class="text-xl">20px</p>
+<p class="text-2xl">24px</p>
+<p class="text-3xl">30px</p>
+<p class="text-4xl">36px</p>
+<p class="text-5xl">48px</p>
+
+<!-- Font weight -->
+<p class="font-light">300</p>
+<p class="font-normal">400</p>
+<p class="font-medium">500</p>
+<p class="font-semibold">600</p>
+<p class="font-bold">700</p>
+
+<!-- Text alignment -->
+<p class="text-left">Left</p>
+<p class="text-center">Center</p>
+<p class="text-right">Right</p>
+
+<!-- Text color -->
+<p class="text-gray-500">Gray text</p>
+<p class="text-blue-600">Blue text</p>
+<p class="text-red-500">Red text</p>
+
+<!-- Line height -->
+<p class="leading-none">1</p>
+<p class="leading-tight">1.25</p>
+<p class="leading-normal">1.5</p>
+<p class="leading-relaxed">1.625</p>
+<p class="leading-loose">2</p>
+
+<!-- Letter spacing -->
+<p class="tracking-tight">-0.05em</p>
+<p class="tracking-normal">0</p>
+<p class="tracking-wide">0.025em</p>
+
+<!-- Text decoration -->
+<p class="underline">Underlined</p>
+<p class="line-through">Strikethrough</p>
+<p class="no-underline">No underline</p>
+```
+
+#### Colors
+
+Tailwind provides a full color palette with 10 shades each:
+
+```
+{color}-50   → lightest
+{color}-100
+{color}-200
+{color}-300
+{color}-400
+{color}-500  → base / medium
+{color}-600
+{color}-700
+{color}-800
+{color}-900
+{color}-950  → darkest
+```
+
+Available colors: `slate`, `gray`, `zinc`, `neutral`, `stone`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`
+
+**Usage:**
+
+```html
+<div class="bg-blue-500">Background</div>
+<p class="text-gray-700">Text color</p>
+<div class="border border-red-300">Border color</div>
+<div class="ring-2 ring-green-500">Ring (outline) color</div>
+```
+
+#### Width & Height
+
+```html
+<!-- Fixed widths -->
+<div class="w-64">256px</div>
+<div class="w-full">100%</div>
+<div class="w-screen">100vw</div>
+<div class="w-1/2">50%</div>
+<div class="w-1/3">33.333%</div>
+
+<!-- Max width (for containers) -->
+<div class="max-w-sm">384px</div>
+<div class="max-w-md">448px</div>
+<div class="max-w-lg">512px</div>
+<div class="max-w-xl">576px</div>
+<div class="max-w-2xl">672px</div>
+<div class="max-w-7xl">1280px</div>
+
+<!-- Height -->
+<div class="h-16">64px</div>
+<div class="h-screen">100vh</div>
+<div class="min-h-screen">min-height: 100vh</div>
+```
+
+#### Flexbox in Tailwind
+
+Everything we learned about Flexbox in Part 2 maps directly to Tailwind classes:
+
+```html
+<!-- Container -->
+<div class="flex">                    <!-- display: flex -->
+<div class="flex flex-col">           <!-- flex-direction: column -->
+<div class="flex flex-row-reverse">   <!-- flex-direction: row-reverse -->
+<div class="flex flex-wrap">          <!-- flex-wrap: wrap -->
+
+<!-- Justify content -->
+<div class="flex justify-start">      <!-- justify-content: flex-start -->
+<div class="flex justify-center">     <!-- justify-content: center -->
+<div class="flex justify-end">        <!-- justify-content: flex-end -->
+<div class="flex justify-between">    <!-- justify-content: space-between -->
+<div class="flex justify-around">     <!-- justify-content: space-around -->
+<div class="flex justify-evenly">     <!-- justify-content: space-evenly -->
+
+<!-- Align items -->
+<div class="flex items-start">        <!-- align-items: flex-start -->
+<div class="flex items-center">       <!-- align-items: center -->
+<div class="flex items-end">          <!-- align-items: flex-end -->
+<div class="flex items-stretch">      <!-- align-items: stretch -->
+
+<!-- Gap -->
+<div class="flex gap-4">              <!-- gap: 16px -->
+<div class="flex gap-x-4 gap-y-2">   <!-- column-gap: 16px; row-gap: 8px -->
+
+<!-- Items -->
+<div class="flex-1">                  <!-- flex: 1 1 0% -->
+<div class="flex-auto">               <!-- flex: 1 1 auto -->
+<div class="flex-none">               <!-- flex: none -->
+<div class="flex-grow">               <!-- flex-grow: 1 -->
+<div class="flex-shrink-0">           <!-- flex-shrink: 0 -->
+<div class="self-center">             <!-- align-self: center -->
+<div class="order-first">             <!-- order: -9999 -->
+<div class="order-last">              <!-- order: 9999 -->
+```
+
+**Practical: Centering with Tailwind:**
+
+```html
+<!-- Center anything horizontally and vertically -->
+<div class="flex justify-center items-center min-h-screen">
+  <div>I'm perfectly centered!</div>
+</div>
+```
+
+#### Borders & Rounded Corners
+
+```html
+<!-- Border -->
+<div class="border">1px solid</div>
+<div class="border-2">2px</div>
+<div class="border-4">4px</div>
+<div class="border-t">top only</div>
+<div class="border-b-2 border-blue-500">bottom 2px blue</div>
+
+<!-- Rounded -->
+<div class="rounded">4px</div>
+<div class="rounded-md">6px</div>
+<div class="rounded-lg">8px</div>
+<div class="rounded-xl">12px</div>
+<div class="rounded-2xl">16px</div>
+<div class="rounded-full">9999px (circle)</div>
+```
+
+#### Shadows
+
+```html
+<div class="shadow-sm">small shadow</div>
+<div class="shadow">default shadow</div>
+<div class="shadow-md">medium shadow</div>
+<div class="shadow-lg">large shadow</div>
+<div class="shadow-xl">extra large shadow</div>
+<div class="shadow-2xl">huge shadow</div>
+```
+
+### 3.5 — Responsive Design in Tailwind
+
+Tailwind is **mobile-first**. Breakpoint prefixes apply styles at that width **and above**:
+
+| Prefix | Min-width | CSS |
+|--------|-----------|-----|
+| (none) | 0px | Default (mobile) |
+| `sm:` | 640px | `@media (min-width: 640px)` |
+| `md:` | 768px | `@media (min-width: 768px)` |
+| `lg:` | 1024px | `@media (min-width: 1024px)` |
+| `xl:` | 1280px | `@media (min-width: 1280px)` |
+| `2xl:` | 1536px | `@media (min-width: 1536px)` |
+
+**Example: Responsive grid**
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="bg-white p-6 rounded-lg shadow">Card 1</div>
+  <div class="bg-white p-6 rounded-lg shadow">Card 2</div>
+  <div class="bg-white p-6 rounded-lg shadow">Card 3</div>
+</div>
+```
+
+- **Mobile** (< 768px): 1 column
+- **Tablet** (768px+): 2 columns
+- **Desktop** (1024px+): 3 columns
+
+**Example: Responsive navigation**
+
+```html
+<nav class="flex flex-col md:flex-row md:items-center md:justify-between p-4">
+  <div class="text-xl font-bold">Logo</div>
+  <div class="hidden md:flex space-x-4">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+```
+
+**Example: Responsive padding and font size**
+
+```html
+<h1 class="text-2xl md:text-4xl lg:text-6xl p-4 md:p-8 lg:p-16">
+  Responsive Heading
+</h1>
+```
+
+### 3.6 — State Variants (hover, focus, active)
+
+Tailwind handles pseudo-classes via prefixes:
+
+```html
+<!-- Hover -->
+<button class="bg-blue-500 hover:bg-blue-700 text-white">
+  Hover me
+</button>
+
+<!-- Focus -->
+<input class="border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none" />
+
+<!-- Active -->
+<button class="bg-green-500 active:bg-green-700">
+  Press me
+</button>
+
+<!-- Group hover (parent hover affects child) -->
+<div class="group p-4 hover:bg-gray-100 rounded-lg">
+  <h3 class="group-hover:text-blue-500">Title</h3>
+  <p class="group-hover:text-gray-700">Description</p>
+</div>
+
+<!-- First/Last child -->
+<ul>
+  <li class="first:pt-0 last:pb-0 py-4 border-b last:border-0">Item</li>
+</ul>
+
+<!-- Odd/Even -->
+<tr class="odd:bg-white even:bg-gray-50">
+
+<!-- Disabled -->
+<button class="disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+  Disabled
+</button>
+
+<!-- Placeholder -->
+<input class="placeholder:text-gray-400 placeholder:italic" placeholder="Search..." />
+```
+
+**Combining variants:**
+
+```html
+<button class="md:hover:bg-blue-700">
+  Only hover effect on md+ screens
+</button>
+```
+
+### 3.7 — Dark Mode
+
+Tailwind supports dark mode out of the box:
+
+**Strategy 1: Media query (follows OS setting)**
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  darkMode: 'media', // default
+}
+```
+
+**Strategy 2: Class-based (manual toggle)**
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class',
+}
+```
+
+```html
+<!-- Add 'dark' class to html or body to enable -->
+<html class="dark">
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
+      <h2 class="text-gray-800 dark:text-gray-200">Dark Mode Card</h2>
+      <p class="text-gray-600 dark:text-gray-400">Content here</p>
+    </div>
+  </body>
+</html>
+```
+
+**Toggle with JavaScript:**
+
+```javascript
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+});
+```
+
+### 3.8 — Customizing Tailwind (tailwind.config.js)
+
+The config file lets you customize every aspect of the design system:
+
+```javascript
+module.exports = {
+  content: ['./Views/**/*.cshtml'],
+  theme: {
+    // Override defaults entirely
+    screens: {
+      'sm': '576px',
+      'md': '768px',
+      'lg': '992px',
+      'xl': '1200px',
+    },
+    
+    // Extend (add to) defaults
+    extend: {
+      colors: {
+        'brand': {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          900: '#1e3a8a',
+        },
+        'wsb': '#e74c3c',
+      },
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Playfair Display', 'serif'],
+      },
+      spacing: {
+        '128': '32rem',
+        '144': '36rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+**Usage of custom values:**
+
+```html
+<div class="bg-brand-500 text-white font-display">
+  Custom branded heading
+</div>
+<div class="bg-wsb rounded-4xl animate-fade-in">
+  WSB colored content
+</div>
+```
+
+**Arbitrary values (one-off overrides):**
+
+```html
+<div class="w-[137px] h-[42px] bg-[#1da1f2] text-[13px] top-[117px]">
+  Exact values when needed
+</div>
+```
+
+### 3.9 — Extracting Components (@apply)
+
+When utility chains get repetitive, extract them:
+
+**Option 1: @apply in CSS (for repeated patterns)**
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 cursor-pointer;
+  }
+  
+  .btn-primary {
+    @apply btn bg-blue-500 text-white hover:bg-blue-600;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 border border-gray-100;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg
+           focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none
+           transition-all duration-200;
+  }
+}
+```
+
+**Option 2: Template partials / components (preferred in frameworks)**
+
+In ASP.NET MVC, use Partial Views:
+
+```html
+<!-- _Button.cshtml -->
+<a href="@ViewBag.Href" 
+   class="inline-block bg-orange-500 hover:bg-orange-600 text-white text-lg font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+    @ViewBag.Text
+</a>
+```
+
+**The Tailwind team recommends components/partials over @apply** because @apply defeats the purpose of utility-first CSS.
+
+### 3.10 — Materialize → Tailwind Conversion Reference
+
+Since our project migrated from Materialize CSS, here's the full mapping table:
+
+| Materialize Class | Tailwind Equivalent | Purpose |
+|------------------|--------------------|---------| 
+| `container` | `max-w-7xl mx-auto px-4` | Centered container |
+| `row` | `flex flex-wrap` or `grid` | Row of columns |
+| `col s12` | `w-full` | Full-width column |
+| `col s12 m4` | `w-full md:w-1/3` | Responsive column |
+| `col s12 m6` | `w-full md:w-1/2` | Half-width on medium |
+| `col l6 s12` | `w-full lg:w-1/2` | Half-width on large |
+| `center` | `text-center` | Center text |
+| `light` | `font-light` | Light font weight |
+| `light-blue lighten-1` | `bg-sky-400` | Blue background |
+| `orange-text` | `text-orange-500` | Orange text |
+| `white-text` | `text-white` | White text |
+| `grey-text text-lighten-4` | `text-gray-300` | Light gray text |
+| `btn-large` | `px-8 py-3 text-lg rounded-lg` | Large button |
+| `waves-effect waves-light orange` | `bg-orange-500 hover:bg-orange-600 transition` | Animated button |
+| `page-footer orange` | `bg-orange-500 mt-auto` | Footer |
+| `hide-on-med-and-down` | `hidden md:flex` | Hide on mobile |
+| `brand-logo` | `text-xl font-bold text-white` | Logo styling |
+| `nav-wrapper` | `flex items-center justify-between` | Nav layout |
+| `section` | `py-12` or `py-16` | Section spacing |
+| `icon-block` | `text-center` | Icon card |
+| `right` | `ml-auto` or `flex justify-end` | Float right |
+| `sidenav` | Mobile menu with `hidden md:hidden` toggle | Mobile nav |
+
+---
+
+> **BREAK — 10 minutes** ☕
+
+---
+
+## Part 4: Tailwind CSS — In Practice (50 min)
+
+Now we apply everything from Part 3 to build our actual project pages.
+
+### 4.1 — Why Utility-First? (Recap)
 
 Traditional approach — you name things and write CSS separately:
 
@@ -684,7 +1320,7 @@ Utility-first — you describe appearance directly:
 4. Design constraints (consistent spacing, colors from a system)
 5. Safe to change (no global CSS side effects)
 
-### 3.2 — Setup in ASP.NET MVC
+### 4.2 — Setup in ASP.NET MVC
 
 For our project, we use the CDN (perfect for learning/prototyping):
 
@@ -723,7 +1359,7 @@ npx tailwindcss init
 npx tailwindcss -i ./src/input.css -o ./wwwroot/css/site.css --watch
 ```
 
-### 3.3 — The Spacing System
+### 4.3 — The Spacing System
 
 Tailwind uses a 4px base unit (same as our SCSS `$space-unit`!):
 
@@ -750,7 +1386,7 @@ Tailwind uses a 4px base unit (same as our SCSS `$space-unit`!):
 | `pt-` | top only | `pt-32` → 128px top |
 | `m-`, `mx-`, etc. | same for margin | `mx-auto` → center horizontally |
 
-### 3.4 — Step by Step: Building the Layout
+### 4.4 — Step by Step: Building the Layout
 
 **Step 1 — Body structure (Flexbox sticky footer):**
 
@@ -815,7 +1451,7 @@ window.addEventListener('scroll', () => {
 - `backdrop-blur-xl` — frosted glass effect
 - Tailwind classes work great with JavaScript `classList` toggling
 
-### 3.5 — Step by Step: Building the Hero Section
+### 4.5 — Step by Step: Building the Hero Section
 
 ```html
 <section class="relative min-h-screen flex items-center overflow-hidden
@@ -877,7 +1513,7 @@ window.addEventListener('scroll', () => {
 - `backdrop-blur` — frosted glass
 - Arbitrary values: `w-[600px]` for one-off sizes
 
-### 3.6 — Step by Step: Feature Cards with Group Hover
+### 4.6 — Step by Step: Feature Cards with Group Hover
 
 ```html
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -905,7 +1541,7 @@ window.addEventListener('scroll', () => {
 - Children use `group-hover:` to react when the parent is hovered
 - Here: the icon background changes AND the link underlines when you hover the card
 
-### 3.7 — Step by Step: The Contact Form
+### 4.7 — Step by Step: The Contact Form
 
 ```html
 <input type="text" placeholder="Jan"
@@ -925,7 +1561,7 @@ window.addEventListener('scroll', () => {
 - `focus:ring-4 focus:ring-violet-500/10` — soft glow effect around field
 - `transition-all` — smooth state changes
 
-### 3.8 — Step by Step: The Product Cards
+### 4.8 — Step by Step: The Product Cards
 
 **Each product card combines Flexbox and Tailwind:**
 
@@ -974,7 +1610,7 @@ window.addEventListener('scroll', () => {
 - `mt-auto` — pushes price/button row to the bottom regardless of content height
 - `aspect-square` — 1:1 ratio for the image area
 
-### 3.9 — Responsive Design: Mobile-First
+### 4.9 — Responsive Design: Mobile-First
 
 Tailwind is mobile-first. Unprefixed = mobile, prefixes = larger screens:
 
@@ -1006,7 +1642,7 @@ Tailwind is mobile-first. Unprefixed = mobile, prefixes = larger screens:
 | `xl:` | 1280px | Desktops |
 | `2xl:` | 1536px | Large desktops |
 
-### 3.10 — The Style Guide Page
+### 4.10 — The Style Guide Page
 
 We built a dedicated Style Guide page (`/Home/StyleGuide`) that serves as a living reference:
 
@@ -1021,9 +1657,9 @@ We built a dedicated Style Guide page (`/Home/StyleGuide`) that serves as a livi
 
 ---
 
-## Part 4: Integration & Wrapup (15 min)
+## Part 5: Integration & Wrapup (15 min)
 
-### 4.1 — SCSS + Tailwind: Working Together
+### 5.1 — SCSS + Tailwind: Working Together
 
 You can use SCSS as the file format while leveraging Tailwind utilities:
 
@@ -1052,7 +1688,7 @@ $brand-radius: 24px;
 }
 ```
 
-### 4.2 — When to Use What
+### 5.2 — When to Use What
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -1076,7 +1712,7 @@ $brand-radius: 24px;
   Tokens          (fastest for most projects)
 ```
 
-### 4.3 — What We Built Today
+### 5.3 — What We Built Today
 
 | Page | URL | Key Concepts |
 |------|-----|-------------|
@@ -1086,7 +1722,7 @@ $brand-radius: 24px;
 | **Contact** | `/Home/Contact` | Form with focus rings, responsive 2-column grid, info cards with group-hover, gradient tip box |
 | **Style Guide** | `/Home/StyleGuide` | SCSS code examples, live Flexbox demos, utility reference, color palette, typography scale, component library |
 
-### 4.4 — Key Takeaways
+### 5.4 — Key Takeaways
 
 1. **SCSS** adds variables, nesting, mixins, and loops to CSS — making large stylesheets maintainable
 2. **Flexbox** handles one-dimensional layouts: navbars, card rows, centering, sticky footers
