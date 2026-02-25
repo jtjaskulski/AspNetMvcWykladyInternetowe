@@ -1,14 +1,166 @@
 @{
-    ViewData["Title"] = "O Sklepie";
+    ViewData["Title"] = "About";
 }
 
-<div class="max-w-7xl mx-auto px-4 py-16 text-center">
-    <h1 class="text-4xl font-bold text-orange-500 mb-6">O sklepie</h1>
-    <p class="text-xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
-        Sklep jest nowoczesny i doskonały. Sklep jest nowoczesny i doskonały. Sklep jest nowoczesny i doskonały.
-    </p>
-    <a href="http://wp.pl"
-       class="inline-block bg-orange-500 hover:bg-orange-600 text-white text-lg font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-        Do sklepu
-    </a>
-</div>
+<!-- Hero -->
+<section class="relative pt-32 pb-20 bg-gradient-to-br from-gray-950 via-gray-900 to-indigo-950">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 animate-fade-in">
+            About <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">TechStore</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto animate-slide-up">
+            An educational e-commerce platform demonstrating modern CSS techniques. Built step-by-step during the WSB-NLU Internet Technologies course.
+        </p>
+    </div>
+</section>
+
+<!-- Mission -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="inline-block px-4 py-1.5 bg-violet-50 text-violet-600 text-sm font-semibold rounded-full mb-6">Our Mission</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">Learning by building real things</h2>
+                <p class="text-gray-500 text-lg leading-relaxed mb-6">
+                    This project isn't just theory — every page you see demonstrates a real CSS concept. The navigation uses Flexbox, the hero uses gradients and animations, and the entire layout is powered by Tailwind's utility classes.
+                </p>
+                <p class="text-gray-500 leading-relaxed">
+                    Under the hood, we show how SCSS would structure the same styles using variables, mixins, and nesting — giving you the tools to pick the right approach for any project.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-8 text-white">
+                    <span class="material-icons-outlined text-4xl mb-4 opacity-80">code</span>
+                    <h4 class="font-bold text-lg mb-1">SCSS</h4>
+                    <p class="text-sm text-violet-200">Variables, mixins, nesting</p>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-3xl p-8 text-white mt-8">
+                    <span class="material-icons-outlined text-4xl mb-4 opacity-80">view_quilt</span>
+                    <h4 class="font-bold text-lg mb-1">Flexbox</h4>
+                    <p class="text-sm text-pink-200">Layouts made easy</p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-8 text-white">
+                    <span class="material-icons-outlined text-4xl mb-4 opacity-80">bolt</span>
+                    <h4 class="font-bold text-lg mb-1">Tailwind</h4>
+                    <p class="text-sm text-amber-200">Utility-first speed</p>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-8 text-white mt-8">
+                    <span class="material-icons-outlined text-4xl mb-4 opacity-80">devices</span>
+                    <h4 class="font-bold text-lg mb-1">Responsive</h4>
+                    <p class="text-sm text-emerald-200">Mobile-first design</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Lecture Roadmap</h2>
+            <p class="text-gray-500 text-lg">How we build this project, step by step.</p>
+        </div>
+
+        <div class="space-y-0">
+            <!-- Step 1 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center font-bold text-sm shrink-0">01</div>
+                    <div class="w-0.5 bg-gray-200 flex-grow mt-2"></div>
+                </div>
+                <div class="pb-12">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">SCSS Fundamentals</h3>
+                    <p class="text-gray-500">Set up variables for colors, spacing, and typography. Create mixins for responsive breakpoints and reusable patterns. Organize partials into a scalable folder structure.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-medium rounded-full">$variables</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-medium rounded-full">@@mixin</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-medium rounded-full">nesting</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-medium rounded-full">@@extend</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center font-bold text-sm shrink-0">02</div>
+                    <div class="w-0.5 bg-gray-200 flex-grow mt-2"></div>
+                </div>
+                <div class="pb-12">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Flexbox Layouts</h3>
+                    <p class="text-gray-500">Build the navigation bar, create responsive card grids, implement the sticky footer pattern. Understand main axis vs cross axis, justify vs align, grow vs shrink.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-medium rounded-full">flex-direction</span>
+                        <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-medium rounded-full">justify-content</span>
+                        <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-medium rounded-full">align-items</span>
+                        <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-medium rounded-full">flex-wrap</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold text-sm shrink-0">03</div>
+                    <div class="w-0.5 bg-gray-200 flex-grow mt-2"></div>
+                </div>
+                <div class="pb-12">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Tailwind CSS</h3>
+                    <p class="text-gray-500">Replace Materialize with Tailwind. Build the hero, feature cards, footer from scratch using utility classes. Add responsive breakpoints, hover states, and dark mode.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full">utility-first</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full">responsive</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full">hover/focus</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full">config</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold text-sm shrink-0">04</div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Integration & Production</h3>
+                    <p class="text-gray-500">Combine SCSS with Tailwind using @@apply. Create a style guide page. Optimize for production with PurgeCSS. Discuss when to use which tool in real projects.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">@@apply</span>
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">purge</span>
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">best practices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tech Stack</h2>
+            <p class="text-gray-500 text-lg">Built with industry-standard tools and frameworks.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="group bg-gray-50 hover:bg-white rounded-2xl p-6 text-center border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="text-3xl font-bold text-violet-600 mb-2 group-hover:scale-110 transition-transform">C#</div>
+                <div class="text-sm text-gray-500 font-medium">ASP.NET MVC</div>
+            </div>
+            <div class="group bg-gray-50 hover:bg-white rounded-2xl p-6 text-center border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="text-3xl font-bold text-pink-600 mb-2 group-hover:scale-110 transition-transform">Sass</div>
+                <div class="text-sm text-gray-500 font-medium">CSS Preprocessor</div>
+            </div>
+            <div class="group bg-gray-50 hover:bg-white rounded-2xl p-6 text-center border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="text-3xl font-bold text-sky-600 mb-2 group-hover:scale-110 transition-transform">Tw</div>
+                <div class="text-sm text-gray-500 font-medium">Tailwind CSS</div>
+            </div>
+            <div class="group bg-gray-50 hover:bg-white rounded-2xl p-6 text-center border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div class="text-3xl font-bold text-indigo-600 mb-2 group-hover:scale-110 transition-transform">Fx</div>
+                <div class="text-sm text-gray-500 font-medium">CSS Flexbox</div>
+            </div>
+        </div>
+    </div>
+</section>

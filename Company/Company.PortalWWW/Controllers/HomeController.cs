@@ -28,6 +28,16 @@ namespace Company.PortalWWW.Controllers
             return View();
         }
 
+        public IActionResult Products()
+        {
+            return View();
+        }
+
+        public IActionResult StyleGuide()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

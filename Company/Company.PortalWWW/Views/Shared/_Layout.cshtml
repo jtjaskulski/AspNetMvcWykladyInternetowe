@@ -1,36 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Company.PortalWWW</title>
+    <title>@ViewData["Title"] - TechStore</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50">
+<body class="flex flex-col min-h-screen bg-white font-sans text-gray-800 antialiased">
 
-    <nav class="bg-sky-400" role="navigation">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a id="logo-container" href="#" class="text-xl font-bold text-white no-underline">WSB-NLU MVC</a>
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 no-underline group">
+                <div class="w-9 h-9 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/25 group-hover:shadow-violet-500/40 transition-shadow">
+                    <span class="text-white font-bold text-sm">T</span>
+                </div>
+                <span class="text-lg font-bold text-white group-hover:text-violet-200 transition-colors">TechStore</span>
+            </a>
 
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                <i class="material-icons text-3xl">menu</i>
-            </button>
-
-            <ul class="hidden md:flex space-x-6 list-none m-0 p-0">
-                <li>@Html.ActionLink("Strona główna", "Index", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
-                <li>@Html.ActionLink("O firmie", "About", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "text-white hover:text-sky-100 transition no-underline" })</li>
+            <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+                <li><a asp-controller="Home" asp-action="Index" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all no-underline">Home</a></li>
+                <li><a asp-controller="Home" asp-action="About" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all no-underline">About</a></li>
+                <li><a asp-controller="Home" asp-action="Products" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all no-underline">Products</a></li>
+                <li><a asp-controller="Home" asp-action="StyleGuide" class="px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all no-underline">Style Guide</a></li>
+                <li><a asp-controller="Home" asp-action="Contact" class="ml-2 px-5 py-2 text-sm font-medium bg-white text-indigo-700 hover:bg-violet-50 rounded-full transition-all no-underline shadow-lg shadow-white/10">Contact Us</a></li>
             </ul>
+
+            <button id="mobile-toggle" class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
+                <span class="material-icons-outlined text-2xl" id="menu-icon">menu</span>
+            </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-sky-500 px-4 pb-4">
-            <ul class="list-none m-0 p-0 space-y-2">
-                <li>@Html.ActionLink("Strona główna", "Index", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
-                <li>@Html.ActionLink("O firmie", "About", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "block text-white hover:text-sky-100 transition no-underline py-2" })</li>
-            </ul>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95 backdrop-blur-xl border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-4 space-y-1">
+                <a asp-controller="Home" asp-action="Index" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition no-underline">Home</a>
+                <a asp-controller="Home" asp-action="About" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition no-underline">About</a>
+                <a asp-controller="Home" asp-action="Products" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition no-underline">Products</a>
+                <a asp-controller="Home" asp-action="StyleGuide" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition no-underline">Style Guide</a>
+                <a asp-controller="Home" asp-action="Contact" class="block px-4 py-3 mt-2 text-center bg-violet-600 text-white rounded-lg hover:bg-violet-500 transition no-underline">Contact Us</a>
+            </div>
         </div>
     </nav>
 
@@ -38,65 +69,78 @@
         @RenderBody()
     </main>
 
-    <section class="max-w-7xl mx-auto px-4 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="text-center">
-                <i class="material-icons text-5xl text-sky-500">flash_on</i>
-                <h5 class="text-xl font-semibold mt-4 mb-2">O sklepie</h5>
-                <p class="text-gray-600 font-light">Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały. Sklep jest doskonały</p>
-            </div>
-
-            <div class="text-center">
-                <i class="material-icons text-5xl text-sky-500">group</i>
-                <h5 class="text-xl font-semibold mt-4 mb-2">O firmie</h5>
-                <p class="text-gray-600 font-light">Firma jest doskonała. Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała Firma jest doskonała</p>
-            </div>
-
-            <div class="text-center">
-                <i class="material-icons text-5xl text-sky-500">settings</i>
-                <h5 class="text-xl font-semibold mt-4 mb-2">O towarach</h5>
-                <p class="text-gray-600 font-light">Towary są doskonałe Towary są doskonałe Towary są doskonałe Towary są doskonałe</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-orange-500 text-white mt-auto">
-        <div class="max-w-7xl mx-auto px-4 py-10">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-2">
-                    <h5 class="text-lg font-semibold mb-2">WSB-NLU</h5>
-                    <p class="text-orange-100">Witamy</p>
+    <footer class="bg-gray-950 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">T</span>
+                        </div>
+                        <span class="text-lg font-bold">TechStore</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">A modern e-commerce platform built with ASP.NET MVC and Tailwind CSS as part of the WSB-NLU Internet Technologies course.</p>
                 </div>
                 <div>
-                    <h5 class="text-lg font-semibold mb-2">Settings</h5>
-                    <ul class="list-none m-0 p-0 space-y-1">
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 1</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 2</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 3</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 4</a></li>
+                    <h6 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Navigation</h6>
+                    <ul class="list-none m-0 p-0 space-y-3">
+                        <li><a href="/" class="text-gray-300 hover:text-white transition text-sm no-underline">Home</a></li>
+                        <li><a href="/Home/About" class="text-gray-300 hover:text-white transition text-sm no-underline">About</a></li>
+                        <li><a href="/Home/Products" class="text-gray-300 hover:text-white transition text-sm no-underline">Products</a></li>
+                        <li><a href="/Home/Contact" class="text-gray-300 hover:text-white transition text-sm no-underline">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-lg font-semibold mb-2">Connect</h5>
-                    <ul class="list-none m-0 p-0 space-y-1">
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 1</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 2</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 3</a></li>
-                        <li><a class="text-white hover:text-orange-200 transition no-underline" href="#!">Link 4</a></li>
+                    <h6 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Resources</h6>
+                    <ul class="list-none m-0 p-0 space-y-3">
+                        <li><a href="https://tailwindcss.com" target="_blank" class="text-gray-300 hover:text-white transition text-sm no-underline">Tailwind CSS Docs</a></li>
+                        <li><a href="https://sass-lang.com" target="_blank" class="text-gray-300 hover:text-white transition text-sm no-underline">Sass Documentation</a></li>
+                        <li><a href="https://flexboxfroggy.com" target="_blank" class="text-gray-300 hover:text-white transition text-sm no-underline">Flexbox Froggy</a></li>
+                        <li><a href="/Home/StyleGuide" class="text-gray-300 hover:text-white transition text-sm no-underline">Style Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Course</h6>
+                    <ul class="list-none m-0 p-0 space-y-3">
+                        <li><span class="text-gray-300 text-sm">WSB-NLU University</span></li>
+                        <li><span class="text-gray-300 text-sm">Internet Technologies</span></li>
+                        <li><span class="text-gray-300 text-sm">Lecture 2: CSS Deep Dive</span></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="border-t border-orange-400">
-            <div class="max-w-7xl mx-auto px-4 py-4 text-sm text-orange-100">
-                Made by WSB-NLU
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2026 WSB-NLU. Built for educational purposes.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-500 hover:text-violet-400 transition">
+                        <span class="material-icons-outlined text-xl">code</span>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-violet-400 transition">
+                        <span class="material-icons-outlined text-xl">school</span>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        const nav = document.getElementById('main-nav');
+        const toggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-gray-900/95', 'backdrop-blur-xl', 'shadow-xl', 'shadow-black/10');
+            } else {
+                nav.classList.remove('bg-gray-900/95', 'backdrop-blur-xl', 'shadow-xl', 'shadow-black/10');
+            }
+        });
+
+        toggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)

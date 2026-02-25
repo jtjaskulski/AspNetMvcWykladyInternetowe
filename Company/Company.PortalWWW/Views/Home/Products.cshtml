@@ -1,0 +1,205 @@
+@{
+    ViewData["Title"] = "Products";
+}
+
+<!-- Hero -->
+<section class="relative pt-32 pb-20 bg-gradient-to-br from-gray-950 via-gray-900 to-indigo-950">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 animate-fade-in">
+            Our <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Products</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto animate-slide-up">
+            A Flexbox-powered product gallery. Resize the browser to see responsive layout in action.
+        </p>
+    </div>
+</section>
+
+<!-- Flexbox Explanation Banner -->
+<section class="py-8 bg-violet-50 border-b border-violet-100">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <span class="font-semibold text-violet-700">Flexbox concepts on this page:</span>
+            <code class="px-3 py-1 bg-white border border-violet-200 rounded-lg text-violet-600 font-mono text-xs">display: flex</code>
+            <code class="px-3 py-1 bg-white border border-violet-200 rounded-lg text-violet-600 font-mono text-xs">flex-wrap: wrap</code>
+            <code class="px-3 py-1 bg-white border border-violet-200 rounded-lg text-violet-600 font-mono text-xs">gap</code>
+            <code class="px-3 py-1 bg-white border border-violet-200 rounded-lg text-violet-600 font-mono text-xs">flex: 1 1 300px</code>
+            <code class="px-3 py-1 bg-white border border-violet-200 rounded-lg text-violet-600 font-mono text-xs">flex-direction: column</code>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Bar (Flexbox: justify-between, items-center, gap, flex-wrap) -->
+<section class="py-8 bg-white border-b border-gray-100 sticky top-16 z-40 backdrop-blur-xl bg-white/90">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+                <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-full transition">All</button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition">Laptops</button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition">Phones</button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition">Audio</button>
+                <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm font-medium rounded-full hover:bg-gray-200 transition">Accessories</button>
+            </div>
+            <p class="text-sm text-gray-400">Showing <span class="font-semibold text-gray-700">8</span> products</p>
+        </div>
+    </div>
+</section>
+
+<!-- Product Grid (Flexbox: flex-wrap with flex-basis for responsive columns) -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- The flex container: items wrap and each item has a min-width via flex-basis -->
+        <div class="flex flex-wrap gap-6">
+
+            <!-- Product Card 1 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-violet-300 group-hover:scale-110 transition-transform duration-500">laptop_mac</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-semibold rounded-full">Laptops</span>
+                        <span class="text-xs text-gray-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">ProBook Ultra 16"</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Powerful laptop with M3 chip, 32GB RAM, and stunning Retina display.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$2,499</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-violet-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-pink-300 group-hover:scale-110 transition-transform duration-500">smartphone</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-semibold rounded-full">Phones</span>
+                        <span class="text-xs text-gray-400">★★★★☆</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">Galaxy Pulse Pro</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Next-gen smartphone with 200MP camera and all-day battery life.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$1,199</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-pink-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-amber-300 group-hover:scale-110 transition-transform duration-500">headphones</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full">Audio</span>
+                        <span class="text-xs text-gray-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">SoundWave ANC 700</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Premium noise-cancelling headphones with spatial audio support.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$349</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-amber-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-emerald-300 group-hover:scale-110 transition-transform duration-500">watch</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Accessories</span>
+                        <span class="text-xs text-gray-400">★★★★☆</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">FitBand Ultra X</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Advanced fitness tracker with GPS, heart rate, and sleep tracking.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$249</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-emerald-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-sky-100 to-cyan-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-sky-300 group-hover:scale-110 transition-transform duration-500">tablet_mac</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-sky-50 text-sky-600 text-xs font-semibold rounded-full">Laptops</span>
+                        <span class="text-xs text-gray-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">AirTab Pro 12.9"</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">The ultimate creative tablet with pencil support and OLED display.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$1,099</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-sky-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="flex-1 min-w-[280px] max-w-sm bg-white rounded-3xl border border-gray-100 overflow-hidden group hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <div class="aspect-square bg-gradient-to-br from-purple-100 to-fuchsia-100 flex items-center justify-center overflow-hidden">
+                    <span class="material-icons-outlined text-8xl text-purple-300 group-hover:scale-110 transition-transform duration-500">keyboard</span>
+                </div>
+                <div class="p-6 flex flex-col gap-3">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-full">Accessories</span>
+                        <span class="text-xs text-gray-400">★★★★☆</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">MechKey Pro 75%</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Mechanical keyboard with hot-swappable switches and RGB lighting.</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                        <span class="text-xl font-bold text-gray-900">$179</span>
+                        <button class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-xl hover:bg-purple-600 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Flexbox Demo Section -->
+<section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">How This Layout Works</h2>
+        <p class="text-gray-500 text-center mb-12">The product grid above uses these Flexbox properties:</p>
+
+        <div class="space-y-6">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div class="flex items-start gap-4">
+                    <code class="px-3 py-1.5 bg-violet-100 text-violet-700 text-sm font-mono rounded-lg whitespace-nowrap shrink-0">display: flex</code>
+                    <p class="text-gray-600 text-sm">The container becomes a flex container. All direct children (product cards) become flex items laid out in a row.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div class="flex items-start gap-4">
+                    <code class="px-3 py-1.5 bg-pink-100 text-pink-700 text-sm font-mono rounded-lg whitespace-nowrap shrink-0">flex-wrap: wrap</code>
+                    <p class="text-gray-600 text-sm">When cards can't fit in one row, they wrap to the next line — creating a responsive grid without media queries.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div class="flex items-start gap-4">
+                    <code class="px-3 py-1.5 bg-indigo-100 text-indigo-700 text-sm font-mono rounded-lg whitespace-nowrap shrink-0">flex: 1 1 280px</code>
+                    <p class="text-gray-600 text-sm">Each card can grow (<code class="text-xs bg-gray-200 px-1 rounded">flex-grow: 1</code>), can shrink (<code class="text-xs bg-gray-200 px-1 rounded">flex-shrink: 1</code>), and starts at 280px minimum (<code class="text-xs bg-gray-200 px-1 rounded">flex-basis: 280px</code>).</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div class="flex items-start gap-4">
+                    <code class="px-3 py-1.5 bg-emerald-100 text-emerald-700 text-sm font-mono rounded-lg whitespace-nowrap shrink-0">gap: 24px</code>
+                    <p class="text-gray-600 text-sm">Modern spacing between flex items — replaces the old margin hack. Works like grid-gap but for Flexbox containers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

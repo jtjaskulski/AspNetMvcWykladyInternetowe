@@ -1,14 +1,147 @@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="max-w-7xl mx-auto px-4 py-16 text-center">
-    <h1 class="text-4xl font-bold text-orange-500 mb-6">Witaj w sklepie</h1>
-    <p class="text-xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
-        Sklep jest nowoczesny i doskonały. Sklep jest nowoczesny i doskonały. Sklep jest nowoczesny i doskonały.
-    </p>
-    <a href="http://wp.pl"
-       class="inline-block bg-orange-500 hover:bg-orange-600 text-white text-lg font-medium px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-        Do sklepu
-    </a>
-</div>
+<!-- Hero -->
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-950 via-indigo-950 to-violet-950">
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-violet-500/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 1.5s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-600/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="animate-fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 border border-violet-500/20 rounded-full text-violet-300 text-sm font-medium mb-8">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                Lecture 2 — CSS Deep Dive
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                Modern CSS<br>
+                <span class="bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">Made Simple</span>
+            </h1>
+            <p class="text-lg text-gray-400 leading-relaxed max-w-lg mb-10">
+                Explore SCSS preprocessors, master Flexbox layouts, and build stunning interfaces with Tailwind CSS — all in one hands-on workshop.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a asp-controller="Home" asp-action="Products"
+                   class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-xl shadow-violet-600/25 hover:shadow-violet-600/40 hover:-translate-y-0.5 transition-all duration-200 no-underline">
+                    Browse Products
+                </a>
+                <a asp-controller="Home" asp-action="StyleGuide"
+                   class="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all duration-200 no-underline backdrop-blur">
+                    Style Guide →
+                </a>
+            </div>
+        </div>
+
+        <div class="hidden lg:block animate-slide-up">
+            <div class="relative">
+                <div class="bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="ml-3 text-gray-500 text-xs font-mono">_layout.cshtml</span>
+                    </div>
+                    <pre class="text-sm leading-relaxed font-mono"><code><span class="text-gray-500">&lt;</span><span class="text-pink-400">div</span> <span class="text-violet-400">class</span><span class="text-gray-500">=</span><span class="text-green-400">"flex items-center gap-4"</span><span class="text-gray-500">&gt;</span>
+  <span class="text-gray-500">&lt;</span><span class="text-pink-400">h1</span> <span class="text-violet-400">class</span><span class="text-gray-500">=</span><span class="text-green-400">"text-4xl font-bold
+      bg-gradient-to-r from-violet-400
+      to-indigo-400 bg-clip-text
+      text-transparent"</span><span class="text-gray-500">&gt;</span>
+    <span class="text-white">Hello, Tailwind!</span>
+  <span class="text-gray-500">&lt;/</span><span class="text-pink-400">h1</span><span class="text-gray-500">&gt;</span>
+<span class="text-gray-500">&lt;/</span><span class="text-pink-400">div</span><span class="text-gray-500">&gt;</span></code></pre>
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-2xl -z-10 blur-xl opacity-50"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <span class="material-icons-outlined text-white/30 text-3xl">expand_more</span>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-24 bg-white" id="features">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Three Pillars of Modern CSS</h2>
+            <p class="text-gray-500 text-lg">Everything you need to build production-ready, responsive, and beautiful user interfaces.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group p-8 rounded-3xl border border-gray-100 hover:border-pink-200 hover:shadow-xl hover:shadow-pink-500/5 transition-all duration-300">
+                <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pink-100 transition-colors">
+                    <span class="material-icons-outlined text-pink-500 text-2xl">palette</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">SCSS / Sass</h3>
+                <p class="text-gray-500 leading-relaxed mb-4">Variables, nesting, mixins, and functions. Write maintainable, DRY stylesheets that scale with your project.</p>
+                <span class="text-pink-500 text-sm font-semibold group-hover:underline">Part 1 of lecture →</span>
+            </div>
+
+            <div class="group p-8 rounded-3xl border border-gray-100 hover:border-violet-200 hover:shadow-xl hover:shadow-violet-500/5 transition-all duration-300">
+                <div class="w-14 h-14 bg-violet-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-violet-100 transition-colors">
+                    <span class="material-icons-outlined text-violet-500 text-2xl">view_quilt</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">CSS Flexbox</h3>
+                <p class="text-gray-500 leading-relaxed mb-4">Master one-dimensional layouts. Navigation bars, card grids, centering — Flexbox handles it all elegantly.</p>
+                <span class="text-violet-500 text-sm font-semibold group-hover:underline">Part 2 of lecture →</span>
+            </div>
+
+            <div class="group p-8 rounded-3xl border border-gray-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300">
+                <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-indigo-100 transition-colors">
+                    <span class="material-icons-outlined text-indigo-500 text-2xl">bolt</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Tailwind CSS</h3>
+                <p class="text-gray-500 leading-relaxed mb-4">Utility-first framework with design constraints built in. Build any design directly in your markup — fast.</p>
+                <span class="text-indigo-500 text-sm font-semibold group-hover:underline">Part 3 of lecture →</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-extrabold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">4h</div>
+                <div class="text-gray-500 text-sm mt-1">Workshop Duration</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-extrabold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">3</div>
+                <div class="text-gray-500 text-sm mt-1">CSS Technologies</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-extrabold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">6</div>
+                <div class="text-gray-500 text-sm mt-1">Pages Built</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-extrabold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">∞</div>
+                <div class="text-gray-500 text-sm mt-1">Possibilities</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700 relative overflow-hidden">
+    <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Ready to dive in?</h2>
+        <p class="text-violet-200 text-lg mb-10 max-w-2xl mx-auto">Start exploring the Style Guide to see SCSS variables, Flexbox patterns, and Tailwind utilities working together in real components.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a asp-controller="Home" asp-action="StyleGuide" class="px-8 py-4 bg-white text-indigo-700 font-semibold rounded-2xl hover:bg-violet-50 transition-all shadow-xl no-underline">
+                Open Style Guide
+            </a>
+            <a asp-controller="Home" asp-action="Contact" class="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all no-underline">
+                Get in Touch
+            </a>
+        </div>
+    </div>
+</section>

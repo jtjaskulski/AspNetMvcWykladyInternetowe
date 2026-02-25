@@ -1,0 +1,555 @@
+@{
+    ViewData["Title"] = "Style Guide";
+}
+
+<!-- Hero -->
+<section class="relative pt-32 pb-20 bg-gradient-to-br from-gray-950 via-gray-900 to-indigo-950">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 animate-fade-in">
+            Style <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Guide</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto animate-slide-up">
+            A living reference of all CSS patterns used in this project — SCSS concepts, Flexbox patterns, and Tailwind utilities.
+        </p>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="py-4 bg-white border-b border-gray-100 sticky top-16 z-40 backdrop-blur-xl bg-white/90">
+    <div class="max-w-7xl mx-auto px-6">
+        <nav class="flex flex-wrap gap-2 text-sm">
+            <a href="#scss" class="px-4 py-2 bg-pink-50 text-pink-600 font-medium rounded-full hover:bg-pink-100 transition no-underline">SCSS</a>
+            <a href="#flexbox" class="px-4 py-2 bg-violet-50 text-violet-600 font-medium rounded-full hover:bg-violet-100 transition no-underline">Flexbox</a>
+            <a href="#tailwind" class="px-4 py-2 bg-indigo-50 text-indigo-600 font-medium rounded-full hover:bg-indigo-100 transition no-underline">Tailwind</a>
+            <a href="#colors" class="px-4 py-2 bg-gray-100 text-gray-600 font-medium rounded-full hover:bg-gray-200 transition no-underline">Colors</a>
+            <a href="#typography" class="px-4 py-2 bg-gray-100 text-gray-600 font-medium rounded-full hover:bg-gray-200 transition no-underline">Typography</a>
+            <a href="#components" class="px-4 py-2 bg-gray-100 text-gray-600 font-medium rounded-full hover:bg-gray-200 transition no-underline">Components</a>
+        </nav>
+    </div>
+</section>
+
+<!-- ==================== SCSS SECTION ==================== -->
+<section id="scss" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-pink-100 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-pink-500">palette</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">SCSS / Sass</h2>
+                <p class="text-gray-500">How these same styles would look as SCSS</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Variables -->
+            <div class="bg-gray-950 rounded-3xl p-6 overflow-hidden">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span class="ml-3 text-gray-500 text-xs font-mono">_variables.scss</span>
+                </div>
+                <pre class="text-sm leading-relaxed font-mono"><code><span class="text-gray-500">// Color palette</span>
+<span class="text-pink-400">$primary</span>:     <span class="text-violet-400">#7c3aed</span>;
+<span class="text-pink-400">$secondary</span>:   <span class="text-violet-400">#4f46e5</span>;
+<span class="text-pink-400">$accent</span>:      <span class="text-violet-400">#ec4899</span>;
+<span class="text-pink-400">$gray-900</span>:    <span class="text-violet-400">#111827</span>;
+
+<span class="text-gray-500">// Spacing scale (4px base)</span>
+<span class="text-pink-400">$space-unit</span>:  <span class="text-amber-400">4px</span>;
+<span class="text-pink-400">$space-4</span>:     <span class="text-pink-400">$space-unit</span> * <span class="text-amber-400">4</span>;  <span class="text-gray-500">// 16px</span>
+<span class="text-pink-400">$space-6</span>:     <span class="text-pink-400">$space-unit</span> * <span class="text-amber-400">6</span>;  <span class="text-gray-500">// 24px</span>
+<span class="text-pink-400">$space-8</span>:     <span class="text-pink-400">$space-unit</span> * <span class="text-amber-400">8</span>;  <span class="text-gray-500">// 32px</span>
+
+<span class="text-gray-500">// Breakpoints</span>
+<span class="text-pink-400">$bp-md</span>:       <span class="text-amber-400">768px</span>;
+<span class="text-pink-400">$bp-lg</span>:       <span class="text-amber-400">1024px</span>;</code></pre>
+            </div>
+
+            <!-- Mixins -->
+            <div class="bg-gray-950 rounded-3xl p-6 overflow-hidden">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span class="ml-3 text-gray-500 text-xs font-mono">_mixins.scss</span>
+                </div>
+                <pre class="text-sm leading-relaxed font-mono"><code><span class="text-sky-400">@@mixin</span> <span class="text-green-400">respond-to</span>(<span class="text-pink-400">$bp</span>) {
+  <span class="text-sky-400">@@media</span> (min-width: <span class="text-pink-400">$bp</span>) {
+    <span class="text-sky-400">@@content</span>;
+  }
+}
+
+<span class="text-sky-400">@@mixin</span> <span class="text-green-400">flex-center</span> {
+  <span class="text-violet-400">display</span>: flex;
+  <span class="text-violet-400">justify-content</span>: center;
+  <span class="text-violet-400">align-items</span>: center;
+}
+
+<span class="text-sky-400">@@mixin</span> <span class="text-green-400">gradient-text</span>(<span class="text-pink-400">$from</span>, <span class="text-pink-400">$to</span>) {
+  <span class="text-violet-400">background</span>: linear-gradient(to right, <span class="text-pink-400">$from</span>, <span class="text-pink-400">$to</span>);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+<span class="text-gray-500">// Usage:</span>
+<span class="text-green-400">.hero-title</span> {
+  <span class="text-sky-400">@@include</span> gradient-text(<span class="text-pink-400">$primary</span>, <span class="text-pink-400">$secondary</span>);
+}</code></pre>
+            </div>
+
+            <!-- Nesting + BEM -->
+            <div class="bg-gray-950 rounded-3xl p-6 overflow-hidden">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span class="ml-3 text-gray-500 text-xs font-mono">_card.scss</span>
+                </div>
+                <pre class="text-sm leading-relaxed font-mono"><code><span class="text-green-400">.card</span> {
+  <span class="text-violet-400">background</span>: white;
+  <span class="text-violet-400">border-radius</span>: <span class="text-amber-400">24px</span>;
+  <span class="text-violet-400">overflow</span>: hidden;
+  <span class="text-violet-400">transition</span>: all <span class="text-amber-400">0.3s</span> ease;
+
+  <span class="text-sky-400">&amp;:hover</span> {
+    <span class="text-violet-400">box-shadow</span>: <span class="text-amber-400">0 20px 40px</span> rgba(0,0,0,0.1);
+    <span class="text-violet-400">transform</span>: translateY(-4px);
+  }
+
+  <span class="text-sky-400">&amp;__image</span> {
+    <span class="text-violet-400">aspect-ratio</span>: <span class="text-amber-400">1</span>;
+    <span class="text-sky-400">@@include</span> flex-center;
+  }
+
+  <span class="text-sky-400">&amp;__body</span> {
+    <span class="text-violet-400">padding</span>: <span class="text-pink-400">$space-6</span>;
+    <span class="text-violet-400">display</span>: flex;
+    <span class="text-violet-400">flex-direction</span>: column;
+    <span class="text-violet-400">gap</span>: <span class="text-amber-400">12px</span>;
+  }
+
+  <span class="text-sky-400">&amp;__footer</span> {
+    <span class="text-violet-400">display</span>: flex;
+    <span class="text-violet-400">justify-content</span>: space-between;
+    <span class="text-violet-400">align-items</span>: center;
+  }
+}</code></pre>
+            </div>
+
+            <!-- each loop -->
+            <div class="bg-gray-950 rounded-3xl p-6 overflow-hidden">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span class="ml-3 text-gray-500 text-xs font-mono">_utilities.scss</span>
+                </div>
+                <pre class="text-sm leading-relaxed font-mono"><code><span class="text-gray-500">// Generate spacing utilities (like Tailwind!)</span>
+<span class="text-sky-400">@@for</span> <span class="text-pink-400">$i</span> from <span class="text-amber-400">0</span> through <span class="text-amber-400">16</span> {
+  <span class="text-green-400">.p-#{$i}</span> { <span class="text-violet-400">padding</span>: <span class="text-pink-400">$space-unit</span> * <span class="text-pink-400">$i</span>; }
+  <span class="text-green-400">.m-#{$i}</span> { <span class="text-violet-400">margin</span>: <span class="text-pink-400">$space-unit</span> * <span class="text-pink-400">$i</span>; }
+}
+
+<span class="text-gray-500">// Theme colors from a map</span>
+<span class="text-pink-400">$theme-colors</span>: (
+  <span class="text-green-400">'primary'</span>:  <span class="text-pink-400">$primary</span>,
+  <span class="text-green-400">'accent'</span>:   <span class="text-pink-400">$accent</span>,
+  <span class="text-green-400">'success'</span>:  <span class="text-violet-400">#10b981</span>,
+  <span class="text-green-400">'danger'</span>:   <span class="text-violet-400">#ef4444</span>,
+);
+
+<span class="text-sky-400">@@each</span> <span class="text-pink-400">$name</span>, <span class="text-pink-400">$color</span> in <span class="text-pink-400">$theme-colors</span> {
+  <span class="text-green-400">.btn-#{$name}</span> {
+    <span class="text-violet-400">background</span>: <span class="text-pink-400">$color</span>;
+    <span class="text-violet-400">color</span>: white;
+    <span class="text-sky-400">&amp;:hover</span> { <span class="text-violet-400">background</span>: darken(<span class="text-pink-400">$color</span>, 10%); }
+  }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FLEXBOX SECTION ==================== -->
+<section id="flexbox" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-violet-100 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-violet-500">view_quilt</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">Flexbox Patterns</h2>
+                <p class="text-gray-500">Interactive demos of common Flexbox layouts</p>
+            </div>
+        </div>
+
+        <!-- Demo: justify-content -->
+        <div class="bg-white rounded-3xl border border-gray-100 p-8 mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">justify-content</h3>
+            <p class="text-sm text-gray-500 mb-6">Controls alignment along the main axis (horizontal by default)</p>
+
+            <div class="space-y-4">
+                <div>
+                    <code class="text-xs font-mono text-violet-600 mb-2 block">justify-content: flex-start</code>
+                    <div class="flex justify-start gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-violet-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="w-16 h-10 bg-violet-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="w-16 h-10 bg-violet-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">3</div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-violet-600 mb-2 block">justify-content: center</code>
+                    <div class="flex justify-center gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-violet-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="w-16 h-10 bg-violet-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="w-16 h-10 bg-violet-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">3</div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-violet-600 mb-2 block">justify-content: space-between</code>
+                    <div class="flex justify-between bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-violet-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="w-16 h-10 bg-violet-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="w-16 h-10 bg-violet-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">3</div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-violet-600 mb-2 block">justify-content: space-evenly</code>
+                    <div class="flex justify-evenly bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-violet-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <div class="w-16 h-10 bg-violet-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <div class="w-16 h-10 bg-violet-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo: align-items -->
+        <div class="bg-white rounded-3xl border border-gray-100 p-8 mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">align-items</h3>
+            <p class="text-sm text-gray-500 mb-6">Controls alignment along the cross axis (vertical by default)</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <code class="text-xs font-mono text-pink-600 mb-2 block">align-items: flex-start</code>
+                    <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4 h-32">
+                        <div class="w-12 h-8 bg-pink-500 rounded-lg"></div>
+                        <div class="w-12 h-14 bg-pink-400 rounded-lg"></div>
+                        <div class="w-12 h-10 bg-pink-300 rounded-lg"></div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-pink-600 mb-2 block">align-items: center</code>
+                    <div class="flex items-center gap-3 bg-gray-50 rounded-xl p-4 h-32">
+                        <div class="w-12 h-8 bg-pink-500 rounded-lg"></div>
+                        <div class="w-12 h-14 bg-pink-400 rounded-lg"></div>
+                        <div class="w-12 h-10 bg-pink-300 rounded-lg"></div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-pink-600 mb-2 block">align-items: flex-end</code>
+                    <div class="flex items-end gap-3 bg-gray-50 rounded-xl p-4 h-32">
+                        <div class="w-12 h-8 bg-pink-500 rounded-lg"></div>
+                        <div class="w-12 h-14 bg-pink-400 rounded-lg"></div>
+                        <div class="w-12 h-10 bg-pink-300 rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo: flex-direction -->
+        <div class="bg-white rounded-3xl border border-gray-100 p-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-1">flex-direction</h3>
+            <p class="text-sm text-gray-500 mb-6">Changes the main axis direction</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <code class="text-xs font-mono text-indigo-600 mb-2 block">flex-direction: row (default)</code>
+                    <div class="flex flex-row gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-indigo-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">A</div>
+                        <div class="w-16 h-10 bg-indigo-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">B</div>
+                        <div class="w-16 h-10 bg-indigo-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">C</div>
+                    </div>
+                </div>
+                <div>
+                    <code class="text-xs font-mono text-indigo-600 mb-2 block">flex-direction: column</code>
+                    <div class="flex flex-col gap-3 bg-gray-50 rounded-xl p-4">
+                        <div class="w-16 h-10 bg-indigo-500 rounded-lg flex items-center justify-center text-white text-xs font-bold">A</div>
+                        <div class="w-16 h-10 bg-indigo-400 rounded-lg flex items-center justify-center text-white text-xs font-bold">B</div>
+                        <div class="w-16 h-10 bg-indigo-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TAILWIND SECTION ==================== -->
+<section id="tailwind" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-indigo-500">bolt</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">Tailwind Utilities</h2>
+                <p class="text-gray-500">Key utility classes used throughout this project</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Spacing</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">p-6</code> <span class="text-gray-500">→ padding: 24px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">px-4</code> <span class="text-gray-500">→ padding-inline: 16px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">mb-6</code> <span class="text-gray-500">→ margin-bottom: 24px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">gap-4</code> <span class="text-gray-500">→ gap: 16px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">mx-auto</code> <span class="text-gray-500">→ margin: 0 auto</span></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Layout</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">flex</code> <span class="text-gray-500">→ display: flex</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">grid</code> <span class="text-gray-500">→ display: grid</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">hidden</code> <span class="text-gray-500">→ display: none</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">max-w-7xl</code> <span class="text-gray-500">→ max-width: 1280px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">min-h-screen</code> <span class="text-gray-500">→ min-height: 100vh</span></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Typography</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">text-4xl</code> <span class="text-gray-500">→ font-size: 36px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">font-bold</code> <span class="text-gray-500">→ font-weight: 700</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">text-center</code> <span class="text-gray-500">→ text-align: center</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">leading-relaxed</code> <span class="text-gray-500">→ line-height: 1.625</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">tracking-wide</code> <span class="text-gray-500">→ letter-spacing: 0.025em</span></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Responsive</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">md:</code> <span class="text-gray-500">→ @@media (min-width: 768px)</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">lg:</code> <span class="text-gray-500">→ @@media (min-width: 1024px)</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">hidden md:flex</code> <span class="text-gray-500">→ hide mobile, show desktop</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">grid-cols-1 md:grid-cols-3</code> <span class="text-gray-500">→ responsive grid</span></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Interactivity</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">hover:</code> <span class="text-gray-500">→ on hover</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">focus:</code> <span class="text-gray-500">→ on focus</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">group-hover:</code> <span class="text-gray-500">→ when parent hovered</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">transition-all</code> <span class="text-gray-500">→ smooth transitions</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">duration-300</code> <span class="text-gray-500">→ 300ms</span></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h4 class="font-bold text-gray-900 mb-3">Effects</h4>
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">shadow-xl</code> <span class="text-gray-500">→ large box shadow</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">rounded-3xl</code> <span class="text-gray-500">→ border-radius: 24px</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">backdrop-blur-xl</code> <span class="text-gray-500">→ frosted glass</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">bg-clip-text</code> <span class="text-gray-500">→ gradient text</span></div>
+                    <div class="flex items-center gap-3"><code class="text-indigo-600 font-mono text-xs">animate-fade-in</code> <span class="text-gray-500">→ custom animation</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COLORS ==================== -->
+<section id="colors" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-white">color_lens</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">Color Palette</h2>
+                <p class="text-gray-500">Project colors — each with 10 shades from Tailwind's palette</p>
+            </div>
+        </div>
+
+        <!-- Violet (Primary) -->
+        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Violet (Primary)</h4>
+        <div class="flex flex-wrap gap-2 mb-8">
+            <div class="w-20 h-20 bg-violet-50 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-violet-600">50</span></div>
+            <div class="w-20 h-20 bg-violet-100 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-violet-600">100</span></div>
+            <div class="w-20 h-20 bg-violet-200 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-violet-700">200</span></div>
+            <div class="w-20 h-20 bg-violet-300 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-violet-800">300</span></div>
+            <div class="w-20 h-20 bg-violet-400 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">400</span></div>
+            <div class="w-20 h-20 bg-violet-500 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">500</span></div>
+            <div class="w-20 h-20 bg-violet-600 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">600</span></div>
+            <div class="w-20 h-20 bg-violet-700 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">700</span></div>
+            <div class="w-20 h-20 bg-violet-800 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">800</span></div>
+            <div class="w-20 h-20 bg-violet-900 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">900</span></div>
+            <div class="w-20 h-20 bg-violet-950 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">950</span></div>
+        </div>
+
+        <!-- Indigo (Secondary) -->
+        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Indigo (Secondary)</h4>
+        <div class="flex flex-wrap gap-2 mb-8">
+            <div class="w-20 h-20 bg-indigo-50 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-indigo-600">50</span></div>
+            <div class="w-20 h-20 bg-indigo-100 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-indigo-600">100</span></div>
+            <div class="w-20 h-20 bg-indigo-200 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-indigo-700">200</span></div>
+            <div class="w-20 h-20 bg-indigo-300 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-indigo-800">300</span></div>
+            <div class="w-20 h-20 bg-indigo-400 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">400</span></div>
+            <div class="w-20 h-20 bg-indigo-500 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">500</span></div>
+            <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">600</span></div>
+            <div class="w-20 h-20 bg-indigo-700 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">700</span></div>
+            <div class="w-20 h-20 bg-indigo-800 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">800</span></div>
+            <div class="w-20 h-20 bg-indigo-900 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">900</span></div>
+            <div class="w-20 h-20 bg-indigo-950 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">950</span></div>
+        </div>
+
+        <!-- Gray (Neutral) -->
+        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Gray (Neutral)</h4>
+        <div class="flex flex-wrap gap-2">
+            <div class="w-20 h-20 bg-gray-50 rounded-2xl border border-gray-100 flex items-end p-2"><span class="text-[10px] font-mono text-gray-600">50</span></div>
+            <div class="w-20 h-20 bg-gray-100 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-gray-600">100</span></div>
+            <div class="w-20 h-20 bg-gray-200 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-gray-700">200</span></div>
+            <div class="w-20 h-20 bg-gray-300 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-gray-800">300</span></div>
+            <div class="w-20 h-20 bg-gray-400 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">400</span></div>
+            <div class="w-20 h-20 bg-gray-500 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">500</span></div>
+            <div class="w-20 h-20 bg-gray-600 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">600</span></div>
+            <div class="w-20 h-20 bg-gray-700 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">700</span></div>
+            <div class="w-20 h-20 bg-gray-800 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">800</span></div>
+            <div class="w-20 h-20 bg-gray-900 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">900</span></div>
+            <div class="w-20 h-20 bg-gray-950 rounded-2xl flex items-end p-2"><span class="text-[10px] font-mono text-white">950</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TYPOGRAPHY ==================== -->
+<section id="typography" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-gray-600">text_fields</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">Typography</h2>
+                <p class="text-gray-500">Font sizes, weights, and text styles</p>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 pb-6 border-b border-gray-100">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-6xl</code>
+                <span class="text-6xl font-extrabold text-gray-900">The quick brown fox</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 pb-6 border-b border-gray-100">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-4xl</code>
+                <span class="text-4xl font-bold text-gray-900">The quick brown fox</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 pb-6 border-b border-gray-100">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-2xl</code>
+                <span class="text-2xl font-semibold text-gray-900">The quick brown fox</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 pb-6 border-b border-gray-100">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-xl</code>
+                <span class="text-xl font-medium text-gray-900">The quick brown fox jumps over the lazy dog</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4 pb-6 border-b border-gray-100">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-base</code>
+                <span class="text-base text-gray-600">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-4">
+                <code class="text-xs font-mono text-gray-400 w-24 shrink-0">text-sm</code>
+                <span class="text-sm text-gray-500">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COMPONENTS ==================== -->
+<section id="components" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center">
+                <span class="material-icons-outlined text-emerald-500">widgets</span>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900">Components</h2>
+                <p class="text-gray-500">Reusable UI patterns built with Tailwind</p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Buttons</h3>
+        <div class="bg-white rounded-3xl border border-gray-100 p-8 mb-8">
+            <div class="flex flex-wrap gap-4 mb-6">
+                <button class="px-6 py-3 bg-violet-600 text-white font-medium rounded-xl hover:bg-violet-700 transition shadow-lg shadow-violet-600/25">Primary</button>
+                <button class="px-6 py-3 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition">Secondary</button>
+                <button class="px-6 py-3 bg-white text-gray-700 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 transition">Outline</button>
+                <button class="px-6 py-3 bg-red-500 text-white font-medium rounded-xl hover:bg-red-600 transition">Danger</button>
+                <button class="px-6 py-3 bg-emerald-500 text-white font-medium rounded-xl hover:bg-emerald-600 transition">Success</button>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <button class="px-4 py-2 bg-violet-600 text-white text-sm font-medium rounded-lg hover:bg-violet-700 transition">Small</button>
+                <button class="px-6 py-3 bg-violet-600 text-white font-medium rounded-xl hover:bg-violet-700 transition">Medium</button>
+                <button class="px-8 py-4 bg-violet-600 text-white text-lg font-medium rounded-2xl hover:bg-violet-700 transition">Large</button>
+                <button class="px-8 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-lg font-medium rounded-2xl hover:shadow-xl transition shadow-lg shadow-violet-600/25">Gradient</button>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Badges</h3>
+        <div class="bg-white rounded-3xl border border-gray-100 p-8 mb-8">
+            <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1 bg-violet-50 text-violet-600 text-xs font-semibold rounded-full">Violet</span>
+                <span class="px-3 py-1 bg-pink-50 text-pink-600 text-xs font-semibold rounded-full">Pink</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-full">Indigo</span>
+                <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">Emerald</span>
+                <span class="px-3 py-1 bg-amber-50 text-amber-600 text-xs font-semibold rounded-full">Amber</span>
+                <span class="px-3 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-full">Red</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">Gray</span>
+            </div>
+        </div>
+
+        <!-- Alert Cards -->
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Alerts</h3>
+        <div class="space-y-4">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex items-start gap-3">
+                <span class="material-icons-outlined text-emerald-600 shrink-0">check_circle</span>
+                <div>
+                    <h4 class="font-semibold text-emerald-800 text-sm">Success</h4>
+                    <p class="text-emerald-700 text-sm">Your changes have been saved successfully.</p>
+                </div>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-3">
+                <span class="material-icons-outlined text-amber-600 shrink-0">warning</span>
+                <div>
+                    <h4 class="font-semibold text-amber-800 text-sm">Warning</h4>
+                    <p class="text-amber-700 text-sm">Please review your input before continuing.</p>
+                </div>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-5 flex items-start gap-3">
+                <span class="material-icons-outlined text-red-600 shrink-0">error</span>
+                <div>
+                    <h4 class="font-semibold text-red-800 text-sm">Error</h4>
+                    <p class="text-red-700 text-sm">Something went wrong. Please try again later.</p>
+                </div>
+            </div>
+            <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-5 flex items-start gap-3">
+                <span class="material-icons-outlined text-indigo-600 shrink-0">info</span>
+                <div>
+                    <h4 class="font-semibold text-indigo-800 text-sm">Info</h4>
+                    <p class="text-indigo-700 text-sm">This page demonstrates Tailwind utility patterns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
